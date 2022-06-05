@@ -1,0 +1,316 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[01:46:59] weburl = "www.sa-mp.com"  (string)
+[01:46:59] 
+[01:46:59] Server Plugins
+[01:46:59] --------------
+[01:46:59]  Loading plugin: streamer
+[01:46:59] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[01:46:59]   Loaded.
+[01:46:59]  Loading plugin: pawncmd
+[01:46:59] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[01:46:59]   Loaded.
+[01:46:59]  Loading plugin: sscanf
+[01:46:59] 
+
+[01:46:59]  ===============================
+
+[01:46:59]       sscanf plugin loaded.     
+
+[01:46:59]         Version:  2.11.4        
+
+[01:46:59]    (c) 2022 Alex "Y_Less" Cole  
+
+[01:46:59]  ===============================
+
+[01:46:59]   Loaded.
+[01:46:59]  Loading plugin: pawnregex
+[01:46:59] [Pawn.Regex] plugin v1.2.3 loading...
+[01:46:59] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[01:46:59]   Loaded.
+[01:46:59]  Loading plugin: mysql
+[01:46:59]  >> plugin.mysql: R41-4 successfully loaded.
+[01:46:59]   Loaded.
+[01:46:59]  Loaded 5 plugins.
+
+[01:47:00] 
+[01:47:00] Filterscripts
+[01:47:00] ---------------
+[01:47:00]   Loading filterscript 'gl_actions.amx'...
+[01:47:00]   Loading filterscript 'gl_realtime.amx'...
+[01:47:00]   Loading filterscript 'gl_property.amx'...
+[01:47:00] 
+-----------------------------------
+[01:47:00] Grand Larceny Property Filterscript		
+[01:47:00] -----------------------------------
+
+[01:47:00]   Loading filterscript 'gl_mapicon.amx'...
+[01:47:00]   Loading filterscript 'ls_elevator.amx'...
+[01:47:00]   Loading filterscript 'attachments.amx'...
+[01:47:00]   Loading filterscript 'skinchanger.amx'...
+[01:47:00] 
+--Admin Player Skin Changer Loaded
+
+[01:47:00]   Loading filterscript 'vspawner.amx'...
+[01:47:00] 
+--Admin Vehicle Spawner Loaded
+
+[01:47:00]   Loading filterscript 'ls_mall.amx'...
+[01:47:00]   Loading filterscript 'ls_beachside.amx'...
+[01:47:00] 
+
+[01:47:00]   |---------------------------------------------------
+[01:47:00]   |--- LS BeachSide Filterscript
+[01:47:00]   |--  Script v1.03
+[01:47:00]   |--  19th April 2015
+[01:47:00]   |---------------------------------------------------
+[01:47:00]   |--  LS BeachSide Building Elevator created
+[01:47:00]   |---------------------------------------------------
+[01:47:00]   Loaded 10 filterscripts.
+
+[01:47:08] MYSQL is working! Hello J0nathan!
+[01:47:08] Reading File: blank
+[01:47:08] Reading File: properties/houses.txt
+[01:47:08] Reading File: properties/businesses.txt
+[01:47:08] Reading File: properties/banks.txt
+[01:47:08] Reading File: properties/police.txt
+[01:47:08] 
+----------------------------------
+[01:47:08] Clear Project started!
+[01:47:08] ----------------------------------
+
+[01:47:08] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[02:24:56] weburl = "www.sa-mp.com"  (string)
+[02:24:56] 
+[02:24:56] Server Plugins
+[02:24:56] --------------
+[02:24:56]  Loading plugin: streamer
+[02:24:56] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[02:24:56]   Loaded.
+[02:24:56]  Loading plugin: pawncmd
+[02:24:56] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[02:24:56]   Loaded.
+[02:24:56]  Loading plugin: sscanf
+[02:24:56] 
+
+[02:24:56]  ===============================
+
+[02:24:56]       sscanf plugin loaded.     
+
+[02:24:56]         Version:  2.11.4        
+
+[02:24:56]    (c) 2022 Alex "Y_Less" Cole  
+
+[02:24:56]  ===============================
+
+[02:24:56]   Loaded.
+[02:24:56]  Loading plugin: pawnregex
+[02:24:56] [Pawn.Regex] plugin v1.2.3 loading...
+[02:24:56] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[02:24:56]   Loaded.
+[02:24:56]  Loading plugin: mysql
+[02:24:56]  >> plugin.mysql: R41-4 successfully loaded.
+[02:24:56]   Loaded.
+[02:24:56]  Loaded 5 plugins.
+
+[02:24:56] 
+[02:24:56] Filterscripts
+[02:24:56] ---------------
+[02:24:56]   Loading filterscript 'gl_actions.amx'...
+[02:24:56]   Loading filterscript 'gl_realtime.amx'...
+[02:24:56]   Loading filterscript 'gl_property.amx'...
+[02:24:56] 
+-----------------------------------
+[02:24:56] Grand Larceny Property Filterscript		
+[02:24:56] -----------------------------------
+
+[02:24:56]   Loading filterscript 'gl_mapicon.amx'...
+[02:24:56]   Loading filterscript 'ls_elevator.amx'...
+[02:24:56]   Loading filterscript 'attachments.amx'...
+[02:24:56]   Loading filterscript 'skinchanger.amx'...
+[02:24:56] 
+--Admin Player Skin Changer Loaded
+
+[02:24:56]   Loading filterscript 'vspawner.amx'...
+[02:24:56] 
+--Admin Vehicle Spawner Loaded
+
+[02:24:56]   Loading filterscript 'ls_mall.amx'...
+[02:24:56]   Loading filterscript 'ls_beachside.amx'...
+[02:24:56] 
+
+[02:24:56]   |---------------------------------------------------
+[02:24:56]   |--- LS BeachSide Filterscript
+[02:24:56]   |--  Script v1.03
+[02:24:56]   |--  19th April 2015
+[02:24:56]   |---------------------------------------------------
+[02:24:56]   |--  LS BeachSide Building Elevator created
+[02:24:56]   |---------------------------------------------------
+[02:24:56]   Loaded 10 filterscripts.
+
+[02:25:04] MYSQL is working! Hello J0nathan!
+
+[02:25:04] Reading File: blank
+[02:25:04] Reading File: properties/houses.txt
+[02:25:04] Reading File: properties/businesses.txt
+[02:25:04] Reading File: properties/banks.txt
+[02:25:04] Reading File: properties/police.txt
+[02:25:04] 
+----------------------------------
+[02:25:04] Clear Project started!
+[02:25:04] ----------------------------------
+
+[02:25:04] Number of vehicle models: 0
+[02:25:44] [connection] 127.0.0.1:51462 requests connection cookie.
+[02:25:45] [connection] incoming connection: 127.0.0.1:51462 id: 0
+[02:25:45] [join] Jonathan_Soderstorm has joined the server (0:127.0.0.1)
+[02:26:04] [part] Jonathan_Soderstorm has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[02:27:37] weburl = "www.sa-mp.com"  (string)
+[02:27:37] 
+[02:27:37] Server Plugins
+[02:27:37] --------------
+[02:27:37]  Loading plugin: streamer
+[02:27:37] 
+
+*** Streamer Plugin v2.9.4 by Incognito loaded ***
+
+[02:27:37]   Loaded.
+[02:27:37]  Loading plugin: pawncmd
+[02:27:37] Pawn.CMD plugin v3.2.0 by urShadow has been loaded
+[02:27:37]   Loaded.
+[02:27:37]  Loading plugin: sscanf
+[02:27:37] 
+
+[02:27:37]  ===============================
+
+[02:27:37]       sscanf plugin loaded.     
+
+[02:27:37]         Version:  2.11.4        
+
+[02:27:37]    (c) 2022 Alex "Y_Less" Cole  
+
+[02:27:37]  ===============================
+
+[02:27:37]   Loaded.
+[02:27:37]  Loading plugin: pawnregex
+[02:27:37] [Pawn.Regex] plugin v1.2.3 loading...
+[02:27:37] [Pawn.Regex] 
+
+    | Pawn.Regex 1.2.3 | 2016 - 2021
+    |--------------------------------
+    | Author and maintainer: katursis
+
+
+    | Compiled: Sep 26 2021 at 11:59:38
+    |--------------------------------------------------------------
+    | Repository: https://github.com/katursis/Pawn.Regex
+
+[02:27:37]   Loaded.
+[02:27:37]  Loading plugin: mysql
+[02:27:37]  >> plugin.mysql: R41-4 successfully loaded.
+[02:27:37]   Loaded.
+[02:27:37]  Loaded 5 plugins.
+
+[02:27:37] 
+[02:27:37] Filterscripts
+[02:27:37] ---------------
+[02:27:37]   Loading filterscript 'gl_actions.amx'...
+[02:27:37]   Loading filterscript 'gl_realtime.amx'...
+[02:27:37]   Loading filterscript 'gl_property.amx'...
+[02:27:37] 
+-----------------------------------
+[02:27:37] Grand Larceny Property Filterscript		
+[02:27:37] -----------------------------------
+
+[02:27:37]   Loading filterscript 'gl_mapicon.amx'...
+[02:27:37]   Loading filterscript 'ls_elevator.amx'...
+[02:27:37]   Loading filterscript 'attachments.amx'...
+[02:27:37]   Loading filterscript 'skinchanger.amx'...
+[02:27:37] 
+--Admin Player Skin Changer Loaded
+
+[02:27:37]   Loading filterscript 'vspawner.amx'...
+[02:27:37] 
+--Admin Vehicle Spawner Loaded
+
+[02:27:37]   Loading filterscript 'ls_mall.amx'...
+[02:27:37]   Loading filterscript 'ls_beachside.amx'...
+[02:27:37] 
+
+[02:27:37]   |---------------------------------------------------
+[02:27:37]   |--- LS BeachSide Filterscript
+[02:27:37]   |--  Script v1.03
+[02:27:37]   |--  19th April 2015
+[02:27:37]   |---------------------------------------------------
+[02:27:37]   |--  LS BeachSide Building Elevator created
+[02:27:37]   |---------------------------------------------------
+[02:27:37]   Loaded 10 filterscripts.
+
+[02:27:46] MYSQL is working! Hello J0nathan!
+
+[02:27:46] Reading File: blank
+[02:27:46] Reading File: properties/houses.txt
+[02:27:46] Reading File: properties/businesses.txt
+[02:27:46] Reading File: properties/banks.txt
+[02:27:46] Reading File: properties/police.txt
+[02:27:46] 
+----------------------------------
+[02:27:46] Clear Project started!
+[02:27:46] ----------------------------------
+
+[02:27:46] Number of vehicle models: 0
+[02:28:25] [connection] 127.0.0.1:56484 requests connection cookie.
+[02:28:26] [connection] incoming connection: 127.0.0.1:56484 id: 0
+[02:28:26] [join] Jonathan_Soderstorm has joined the server (0:127.0.0.1)
+[02:28:50] [part] Jonathan_Soderstorm has left the server (0:1)
