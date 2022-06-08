@@ -21,7 +21,6 @@
 #define COLOR_GREEN 0x34bd19AA
 #define COLOR_BLUE 0x0089cdAA
 
-
 new MYSQL:dbHandle;
 
 enum playerClass {
@@ -62,8 +61,7 @@ main()
 public OnGameModeInit()
 {
 	SetGameModeText("Clear Project");
-
-	Mapping();
+	AddPlayerClass(102, 1958.3783, 1343.1572, 15.3746, 269.1425, 24, 9999, 38, 10000, 26, 10000); // clear maybe later
 
 	ConnectMySQL();
 	return 1;
@@ -97,11 +95,6 @@ public OnPlayerRequestClass(playerid, classid)
 public OnPlayerConnect(playerid)
 {
 	GetPlayerName(playerid, player_Info[playerid][NAME], MAX_PLAYER_NAME);
-	TogglePlayerSpectating(playerid, 1);
-	
-	//InterpolateCameraPos(playerid, );
-	//InterpolateCameraLookAt(playerid, );
-	
 	static const fmt_query[] = "SELECT `id` FROM `users` WHERE `name` = '%s'";
 	new query[sizeof(fmt_query) + (-2 + MAX_PLAYER_NAME)];
 	format(query, sizeof(query), fmt_query, player_Info[playerid][NAME]);
@@ -128,14 +121,14 @@ stock showLogin(playerid)
 stock showReg(playerid){
 	new dialog[440 + (-2 + MAX_PLAYER_NAME)];
 	format(dialog, sizeof(dialog),
-	"{FFFFFF}\tУважаемый {0089cd}%s,{FFFFFF} добро пожаловать на {0089cd}«Clean Project»{FFFFFF}\n\
-	\t\t\t{f21956}Аккаунта с таким ником не существует.{ffffff}\n\
-	Для игры на нашем сервере вы должны пройти регистрацию.\n\n\
- 	Придумайте сложный пароль для вашего будущего аккаунта и нажмите \"Далее\"\n\
-	{f27719}Примечание:\n\
-	Пароль должен быть от {FFFFFF}8-ми{F27719} до {FFFFFF}32-ух{F27719} символов.\n\
-	Пароль должен состоять только из цифр и латинских символов.", player_Info[playerid][NAME]);
-	SPD(playerid, DLG_REG, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Пароль", dialog, "Далее", "Выйти");
+	"{FFFFFF}\tГ“ГўГ Г¦Г ГҐГ¬Г»Г© {0089cd}%s,{FFFFFF} Г¤Г®ГЎГ°Г® ГЇГ®Г¦Г Г«Г®ГўГ ГІГј Г­Г  {0089cd}В«Clean ProjectВ»{FFFFFF}\n\
+	\t\t\t{f21956}ГЂГЄГЄГ ГіГ­ГІГ  Г± ГІГ ГЄГЁГ¬ Г­ГЁГЄГ®Г¬ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ.{ffffff}\n\
+	Г„Г«Гї ГЁГЈГ°Г» Г­Г  Г­Г ГёГҐГ¬ Г±ГҐГ°ГўГҐГ°ГҐ ГўГ» Г¤Г®Г«Г¦Г­Г» ГЇГ°Г®Г©ГІГЁ Г°ГҐГЈГЁГ±ГІГ°Г Г¶ГЁГѕ.\n\n\
+ 	ГЏГ°ГЁГ¤ГіГ¬Г Г©ГІГҐ Г±Г«Г®Г¦Г­Г»Г© ГЇГ Г°Г®Г«Гј Г¤Г«Гї ГўГ ГёГҐГЈГ® ГЎГіГ¤ГіГ№ГҐГЈГ® Г ГЄГЄГ ГіГ­ГІГ  ГЁ Г­Г Г¦Г¬ГЁГІГҐ \"Г„Г Г«ГҐГҐ\"\n\
+	{f27719}ГЏГ°ГЁГ¬ГҐГ·Г Г­ГЁГҐ:\n\
+	ГЏГ Г°Г®Г«Гј Г¤Г®Г«Г¦ГҐГ­ ГЎГ»ГІГј Г®ГІ {FFFFFF}8-Г¬ГЁ{F27719} Г¤Г® {FFFFFF}32-ГіГµ{F27719} Г±ГЁГ¬ГўГ®Г«Г®Гў.\n\
+	ГЏГ Г°Г®Г«Гј Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г±ГІГ®ГїГІГј ГІГ®Г«ГјГЄГ® ГЁГ§ Г¶ГЁГґГ° ГЁ Г«Г ГІГЁГ­Г±ГЄГЁГµ Г±ГЁГ¬ГўГ®Г«Г®Гў.", player_Info[playerid][NAME]);
+	SPD(playerid, DLG_REG, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» ГЏГ Г°Г®Г«Гј", dialog, "Г„Г Г«ГҐГҐ", "Г‚Г»Г©ГІГЁ");
 }
 
 public OnPlayerDisconnect(playerid, reason)
@@ -303,12 +296,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if(!strlen(inputtext))
 				{
 					showReg(playerid);
-					return SCM(playerid, COLOR_RED, "Пароль должен состоять от {FFFFFF}8-ми{FF0000} до {FFFFFF}32-ух{FF0000} символов!");
+					return SCM(playerid, COLOR_RED, "ГЏГ Г°Г®Г«Гј Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г±ГІГ®ГїГІГј Г®ГІ {FFFFFF}8-Г¬ГЁ{FF0000} Г¤Г® {FFFFFF}32-ГіГµ{FF0000} Г±ГЁГ¬ГўГ®Г«Г®Гў!");
 				}
-				if(strlen(inputtext) < 8 || strlen(inputtext) > 32)
+				if(!(8 <= strlen(inputtext) <= 32)
 				{
 					showReg(playerid);
-					return SCM(playerid, COLOR_RED, "Длина пароля должна быть от {FFFFFF}8-ми{FF0000} до {FFFFFF}32-ух{FF0000} символов!");
+					return SCM(playerid, COLOR_RED, "Г„Г«ГЁГ­Г  ГЇГ Г°Г®Г«Гї Г¤Г®Г«Г¦Г­Г  ГЎГ»ГІГј Г®ГІ {FFFFFF}8-Г¬ГЁ{FF0000} Г¤Г® {FFFFFF}32-ГіГµ{FF0000} Г±ГЁГ¬ГўГ®Г«Г®Гў!");
 				}
 				new regex:rg_checkpass = Regex_New("^[a-zA-Z0-9]{1,}$");
 				if(Regex_Check(inputtext,rg_checkpass))
@@ -322,20 +315,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					SHA256_PassHash(inputtext, salt, player_Info[playerid][PASSWORD], 65);
 					strmid(player_Info[playerid][SALT], salt, 0, 11, 11);
 					//strmid(player_Info[playerid][PASSWORD], inputtext, 0, strlen(inputtext), 32);
-					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Email", "{FFFFFF}Введите ваш настоящий {0089cd}E-mail{FFFFFF} адрес в поле ниже\n\
-				 	Чтобы вы смогли восстановить аккаунт.", "Далее", "Пропустить");
+					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Email", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ ГўГ Гё Г­Г Г±ГІГ®ГїГ№ГЁГ© {0089cd}E-mail{FFFFFF} Г Г¤Г°ГҐГ± Гў ГЇГ®Г«ГҐ Г­ГЁГ¦ГҐ\n\
+				 	Г—ГІГ®ГЎГ» ГўГ» Г±Г¬Г®ГЈГ«ГЁ ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГј Г ГЄГЄГ ГіГ­ГІ.", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
 				}
 				else
 				{
 					showReg(playerid);
 					Regex_Delete(rg_checkpass);
-					return SCM(playerid, COLOR_RED, "Пароль должен состоять только из цифр и латинских символов!");
+					return SCM(playerid, COLOR_RED, "ГЏГ Г°Г®Г«Гј Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г±ГІГ®ГїГІГј ГІГ®Г«ГјГЄГ® ГЁГ§ Г¶ГЁГґГ° ГЁ Г«Г ГІГЁГ­Г±ГЄГЁГµ Г±ГЁГ¬ГўГ®Г«Г®Гў!");
 				}
 				Regex_Delete(rg_checkpass);
 			}
 			else
 			{
-				SCM(playerid, COLOR_RED, "Вы были кикнуты с сервера. Пожайлуста выйдите из игры или напишите в чат команду: \"/q\"");
+				SCM(playerid, COLOR_RED, "Г‚Г» ГЎГ»Г«ГЁ ГЄГЁГЄГ­ГіГІГ» Г± Г±ГҐГ°ГўГҐГ°Г . ГЏГ®Г¦Г Г©Г«ГіГ±ГІГ  ГўГ»Г©Г¤ГЁГІГҐ ГЁГ§ ГЁГЈГ°Г» ГЁГ«ГЁ Г­Г ГЇГЁГёГЁГІГҐ Гў Г·Г ГІ ГЄГ®Г¬Г Г­Г¤Гі: \"/q\"");
 				return Kick(playerid);
 			}
 		}
@@ -345,41 +338,41 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(!strlen(inputtext))
 				{
-					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Email", "{FFFFFF}Введите ваш настоящий {0089cd}E-mail{FFFFFF} адрес в поле ниже\n\
-				 	Чтобы вы смогли восстановить аккаунт.", "Далее", "Пропустить");
-				 	return SCM(playerid, COLOR_RED, "Поле не может быть пустым!");
+					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Email", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ ГўГ Гё Г­Г Г±ГІГ®ГїГ№ГЁГ© {0089cd}E-mail{FFFFFF} Г Г¤Г°ГҐГ± Гў ГЇГ®Г«ГҐ Г­ГЁГ¦ГҐ\n\
+				 	Г—ГІГ®ГЎГ» ГўГ» Г±Г¬Г®ГЈГ«ГЁ ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГј Г ГЄГЄГ ГіГ­ГІ.", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
+				 	return SCM(playerid, COLOR_RED, "ГЏГ®Г«ГҐ Г­ГҐ Г¬Г®Г¦ГҐГІ ГЎГ»ГІГј ГЇГіГ±ГІГ»Г¬!");
 				}
 				if(strlen(inputtext) < 4 || strlen(inputtext) > 64)
 				{
-					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Email", "{FFFFFF}Введите ваш настоящий {0089cd}E-mail{FFFFFF} адрес в поле ниже\n\
-				 	Чтобы вы смогли восстановить аккаунт.", "Далее", "Пропустить");
-				 	return SCM(playerid, COLOR_BLUE, "E-mail {FF0000} адрес должен состоять хотя-бы из 4 до 64 символов!");
+					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Email", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ ГўГ Гё Г­Г Г±ГІГ®ГїГ№ГЁГ© {0089cd}E-mail{FFFFFF} Г Г¤Г°ГҐГ± Гў ГЇГ®Г«ГҐ Г­ГЁГ¦ГҐ\n\
+				 	Г—ГІГ®ГЎГ» ГўГ» Г±Г¬Г®ГЈГ«ГЁ ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГј Г ГЄГЄГ ГіГ­ГІ.", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
+				 	return SCM(playerid, COLOR_BLUE, "E-mail {FF0000} Г Г¤Г°ГҐГ± Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г±ГІГ®ГїГІГј ГµГ®ГІГї-ГЎГ» ГЁГ§ 4 Г¤Г® 64 Г±ГЁГ¬ГўГ®Г«Г®Гў!");
 				}
 				new regex:rg_checkEmail = Regex_New("^[a-zA-Z0-9.-_]{1,43}@[a-zA-Z]{1,12}.[a-zA-Z]{1,8}$");
 				if(Regex_Check(inputtext,rg_checkEmail))
 				{
 					strmid(player_Info[playerid][EMAIL], inputtext, 0, strlen(inputtext), 64);
-					SPD(playerid, DLG_REF, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Реферал", "{FFFFFF}Введите ник {0089cd}игрока{FFFFFF} пригласившего вас на сервер, и при достижении {ffd500}5-го{FFFFFF} уровня вы получите награду!\n\
-					Вид награды:\n\
-					{5dd911}» 150.000${FFFFFF}\n\
-					{b6e1d1}» + 3 очка к следующему уровню.{FFFFFF}", "Далее", "Пропустить");
+					SPD(playerid, DLG_REF, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» ГђГҐГґГҐГ°Г Г«", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ Г­ГЁГЄ {0089cd}ГЁГЈГ°Г®ГЄГ {FFFFFF} ГЇГ°ГЁГЈГ«Г Г±ГЁГўГёГҐГЈГ® ГўГ Г± Г­Г  Г±ГҐГ°ГўГҐГ°, ГЁ ГЇГ°ГЁ Г¤Г®Г±ГІГЁГ¦ГҐГ­ГЁГЁ {ffd500}5-ГЈГ®{FFFFFF} ГіГ°Г®ГўГ­Гї ГўГ» ГЇГ®Г«ГіГ·ГЁГІГҐ Г­Г ГЈГ°Г Г¤Гі!\n\
+					Г‚ГЁГ¤ Г­Г ГЈГ°Г Г¤Г»:\n\
+					{5dd911}В» 150.000${FFFFFF}\n\
+					{b6e1d1}В» + 3 Г®Г·ГЄГ  ГЄ Г±Г«ГҐГ¤ГіГѕГ№ГҐГ¬Гі ГіГ°Г®ГўГ­Гѕ.{FFFFFF}", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
 				}
 				else
 				{
-					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Email", "{FFFFFF}Введите ваш настоящий {0089cd}E-mail{FFFFFF} адрес в поле ниже\n\
-				 	Чтобы вы смогли восстановить аккаунт.", "Далее", "Пропустить");
+					SPD(playerid, DLG_MAIL, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Email", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ ГўГ Гё Г­Г Г±ГІГ®ГїГ№ГЁГ© {0089cd}E-mail{FFFFFF} Г Г¤Г°ГҐГ± Гў ГЇГ®Г«ГҐ Г­ГЁГ¦ГҐ\n\
+				 	Г—ГІГ®ГЎГ» ГўГ» Г±Г¬Г®ГЈГ«ГЁ ГўГ®Г±Г±ГІГ Г­Г®ГўГЁГІГј Г ГЄГЄГ ГіГ­ГІ.", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
  					Regex_Delete(rg_checkEmail);
-	                return SCM(playerid, COLOR_BLUE, "E-mail {FF0000} адрес должен состоять из латинских символов, чисел, точек.");
+	                return SCM(playerid, COLOR_BLUE, "E-mail {FF0000} Г Г¤Г°ГҐГ± Г¤Г®Г«Г¦ГҐГ­ Г±Г®Г±ГІГ®ГїГІГј ГЁГ§ Г«Г ГІГЁГ­Г±ГЄГЁГµ Г±ГЁГ¬ГўГ®Г«Г®Гў, Г·ГЁГ±ГҐГ«, ГІГ®Г·ГҐГЄ.");
 				}
 				Regex_Delete(rg_checkEmail);
 			}
 			else
 			{
-				SPD(playerid, DLG_REF, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Реферал", "{FFFFFF}Введите ник {0089cd}игрока{FFFFFF} пригласившего вас на сервер, и при достижении {ffd500}5-го{FFFFFF} уровня вы получите награду!\n\
-				Вид награды:\n\
-				{5dd911}» 150.000${FFFFFF}\n\
-				{b6e1d1}» + 3 очка к следующему уровню.{FFFFFF}", "Далее", "Пропустить");
-				return SCM(playerid, COLOR_GREEN, "E-mail всегда можно будет добавить в меню настроек безопасности!");
+				SPD(playerid, DLG_REF, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» ГђГҐГґГҐГ°Г Г«", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ Г­ГЁГЄ {0089cd}ГЁГЈГ°Г®ГЄГ {FFFFFF} ГЇГ°ГЁГЈГ«Г Г±ГЁГўГёГҐГЈГ® ГўГ Г± Г­Г  Г±ГҐГ°ГўГҐГ°, ГЁ ГЇГ°ГЁ Г¤Г®Г±ГІГЁГ¦ГҐГ­ГЁГЁ {ffd500}5-ГЈГ®{FFFFFF} ГіГ°Г®ГўГ­Гї ГўГ» ГЇГ®Г«ГіГ·ГЁГІГҐ Г­Г ГЈГ°Г Г¤Гі!\n\
+				Г‚ГЁГ¤ Г­Г ГЈГ°Г Г¤Г»:\n\
+				{5dd911}В» 150.000${FFFFFF}\n\
+				{b6e1d1}В» + 3 Г®Г·ГЄГ  ГЄ Г±Г«ГҐГ¤ГіГѕГ№ГҐГ¬Гі ГіГ°Г®ГўГ­Гѕ.{FFFFFF}", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
+				return SCM(playerid, COLOR_GREEN, "E-mail ГўГ±ГҐГЈГ¤Г  Г¬Г®Г¦Г­Г® ГЎГіГ¤ГҐГІ Г¤Г®ГЎГ ГўГЁГІГј Гў Г¬ГҐГ­Гѕ Г­Г Г±ГІГ°Г®ГҐГЄ ГЎГҐГ§Г®ГЇГ Г±Г­Г®Г±ГІГЁ!");
 			}
 		}
 		case DLG_REF:
@@ -390,30 +383,28 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				new query[sizeof(fmt_query) + (-2 + MAX_PLAYER_NAME)];
 				format(query, sizeof(query), fmt_query, inputtext);
 				mysql_tquery(dbHandle, query, "checkReferal", "is", playerid, inputtext);
-				SPD(playerid, DLG_GENDER, DIALOG_STYLE_MSGBOX, "{0089cd}Clean Project{ffffff} » Регистрация » Выбор пола","{FFFFFF}Выберите пол вашего будущего персонажа:","Мужской","Женский");
+				SPD(playerid, DLG_GENDER, DIALOG_STYLE_MSGBOX, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Г‚Г»ГЎГ®Г° ГЇГ®Г«Г ","{FFFFFF}Г‚Г»ГЎГҐГ°ГЁГІГҐ ГЇГ®Г« ГўГ ГёГҐГЈГ® ГЎГіГ¤ГіГ№ГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г :","ГЊГіГ¦Г±ГЄГ®Г©","Г†ГҐГ­Г±ГЄГЁГ©");
 			}
 			else
 			{
-			    SPD(playerid, DLG_GENDER, DIALOG_STYLE_MSGBOX, "{0089cd}Clean Project{ffffff} » Регистрация » Выбор пола","{FFFFFF}Выберите пол будущего персонажа:    ","Мужской","Женский");
-				return SCM(playerid, COLOR_RED, "Вы больше не сможете ввести ник пригласившего вас игрока!");
+			    SPD(playerid, DLG_GENDER, DIALOG_STYLE_MSGBOX, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Г‚Г»ГЎГ®Г° ГЇГ®Г«Г ","{FFFFFF}Г‚Г»ГЎГҐГ°ГЁГІГҐ ГЇГ®Г« ГЎГіГ¤ГіГ№ГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г :    ","ГЊГіГ¦Г±ГЄГ®Г©","Г†ГҐГ­Г±ГЄГЁГ©");
+				return SCM(playerid, COLOR_RED, "Г‚Г» ГЎГ®Г«ГјГёГҐ Г­ГҐ Г±Г¬Г®Г¦ГҐГІГҐ ГўГўГҐГ±ГІГЁ Г­ГЁГЄ ГЇГ°ГЁГЈГ«Г Г±ГЁГўГёГҐГЈГ® ГўГ Г± ГЁГЈГ°Г®ГЄГ !");
 			}
 		}
 		case DLG_GENDER:
 		{
-			if(response)
-			{
-				player_Info[playerid][GENDER] = 1;
-			}
-			else
-			{
-				player_Info[playerid][GENDER] = 2;
-			}
-			SPD(playerid, DLG_RACE, DIALOG_STYLE_LIST ,"{0089cd}Clean Project{ffffff} » Регистрация » Выбор расы","{FFFFFF}Европеодная\nАзиатская\nАфриканская","Выбрать","");
+			player_Info[playerid][GENDER] = (response) ? (1) : (2);
+			SPD(playerid, DLG_RACE, DIALOG_STYLE_LIST ,"{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Г‚Г»ГЎГ®Г° Г°Г Г±Г»","{FFFFFF}Г…ГўГ°Г®ГЇГҐГ®Г¤Г­Г Гї\nГЂГ§ГЁГ ГІГ±ГЄГ Гї\nГЂГґГ°ГЁГЄГ Г­Г±ГЄГ Гї","Г‚Г»ГЎГ°Г ГІГј","");
 		}
 		case DLG_RACE:
 		{
-			player_Info[playerid][RACE] = listitem + 1;
-			SPD(playerid, DLG_AGE, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Возраст","{FFFFFF}Напишите возраст вашего будущего персонажа от 18-ми до 60-ти","Далее","");
+			switch(listitem)
+			{
+				case 0: player_Info[playerid][RACE] = 2;
+				case 1: player_Info[playerid][RACE] = 3;
+				case 2: player_Info[playerid][RACE] = 1;
+			}
+			SPD(playerid, DLG_AGE, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Г‚Г®Г§Г°Г Г±ГІ","{FFFFFF}ГЌГ ГЇГЁГёГЁГІГҐ ГўГ®Г§Г°Г Г±ГІ ГўГ ГёГҐГЈГ® ГЎГіГ¤ГіГ№ГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г  Г®ГІ 18-Г¬ГЁ Г¤Г® 60-ГІГЁ","Г„Г Г«ГҐГҐ","");
 		}
 		case DLG_AGE:
 		{
@@ -421,16 +412,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				if(!strlen(inputtext))
 				{
-					SPD(playerid, DLG_AGE, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Возраст","{FFFFFF}Напишите возраст вашего будущего персонажа от 18-ми до 60-ти","Далее","");
-					return SCM(playerid, COLOR_RED, "Поле не должно быть пустым!");
+					SPD(playerid, DLG_AGE, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Г‚Г®Г§Г°Г Г±ГІ","{FFFFFF}ГЌГ ГЇГЁГёГЁГІГҐ ГўГ®Г§Г°Г Г±ГІ ГўГ ГёГҐГЈГ® ГЎГіГ¤ГіГ№ГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г  Г®ГІ 18-Г¬ГЁ Г¤Г® 60-ГІГЁ","Г„Г Г«ГҐГҐ","");
+					return SCM(playerid, COLOR_RED, "ГЏГ®Г«ГҐ Г­ГҐ Г¤Г®Г«Г¦Г­Г® ГЎГ»ГІГј ГЇГіГ±ГІГ»Г¬!");
 				}
 				if(strval(inputtext) < 18 || strval(inputtext) > 60)
 				{
-					SPD(playerid, DLG_AGE, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Возраст","{FFFFFF}Напишите возраст вашего будущего персонажа от 18-ми до 60-ти","Далее","");
-					return SCM(playerid, COLOR_RED, "Возраст должен быть не менее 18 и не более 60!");
+					SPD(playerid, DLG_AGE, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» Г‚Г®Г§Г°Г Г±ГІ","{FFFFFF}ГЌГ ГЇГЁГёГЁГІГҐ ГўГ®Г§Г°Г Г±ГІ ГўГ ГёГҐГЈГ® ГЎГіГ¤ГіГ№ГҐГЈГ® ГЇГҐГ°Г±Г®Г­Г Г¦Г  Г®ГІ 18-Г¬ГЁ Г¤Г® 60-ГІГЁ","Г„Г Г«ГҐГҐ","");
+					return SCM(playerid, COLOR_RED, "Г‚Г®Г§Г°Г Г±ГІ Г¤Г®Г«Г¦ГҐГ­ ГЎГ»ГІГј Г­ГҐ Г¬ГҐГ­ГҐГҐ 18 ГЁ Г­ГҐ ГЎГ®Г«ГҐГҐ 60!");
 				}
 				player_Info[playerid][AGE] = strval(inputtext);
-
+				
 				new maleSkins[9][4] = {
 					{19,21,22,28},
 					{24,25,36,67},
@@ -475,48 +466,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				format(date, sizeof(date), "%02d.%02d.%d", day, month, year);
 			    new ip[16];
 		     	GetPlayerIp(playerid, ip, sizeof(ip));
-
+			    
 		    	static const fmt_query[] = "INSERT INTO `users` (`name`, `password`, `salt`, `email`, `referal`, `gender`, `race`, `age`, `skin`, `regData`, `regIP`) VALUES ('%s','%s','%s','%s','%d','%d','%d','%d','%d','%s','%s')";
 				new query[sizeof(fmt_query) + (-2 + MAX_PLAYER_NAME) + (-2 + 64) + (-2 + 10) + (-2 + 64) + (-2 + 8) + (-2 + 1) + (-2 + 1) + (-2 + 2) + (-2 + 3) + (-2 + 12) + (-2 + 15)];
 				format(query, sizeof(query), fmt_query, player_Info[playerid][NAME], player_Info[playerid][PASSWORD], player_Info[playerid][SALT], player_Info[playerid][EMAIL], player_Info[playerid][REFERAL], player_Info[playerid][GENDER], player_Info[playerid][RACE], player_Info[playerid][AGE], player_Info[playerid][SKIN], date, ip); //player_Info[playerid][]
 				mysql_query(dbHandle, query);
-
-				static const fmt_query2[] = "SELECT * FROM `users` WHERE `name` = '%s' AND `password` = '%s'";
-				new query2[sizeof(fmt_query2) + (-2 + MAX_PLAYER_NAME) + (-2 + 64)];
-				format(query2, sizeof(query), fmt_query2, player_Info[playerid][NAME], player_Info[playerid][PASSWORD]); //player_Info[playerid][]
-				mysql_tquery(dbHandle, query2, "playerLogin", "i", playerid);
-
-				SCM(playerid, COLOR_GREEN, "Регистрация завершена!");
+			    
+				SCM(playerid, COLOR_GREEN, "ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї Г§Г ГўГҐГ°ГёГҐГ­Г !");
 			}
 		}
 	}
 	return 1;
-}
-
-forward playerLogin(playerid);
-public playerLogin(playerid)
-{
-	new rows;
-	cache_get_row_count(rows);
-	if(rows)
-	{
-	    cache_get_value_name_int(0, "id", player_Info[playerid][ID]);
-	    cache_get_value_name(0, "email", player_Info[playerid][EMAIL], 64);
-	    cache_get_value_name_int(0, "referal", player_Info[playerid][REFERAL]);
-	    cache_get_value_name_int(0, "gender", player_Info[playerid][GENDER]);
-	    cache_get_value_name_int(0, "race", player_Info[playerid][RACE]);
-	    cache_get_value_name_int(0, "skin", player_Info[playerid][SKIN]);
-	    cache_get_value_name(0, "regData", player_Info[playerid][REGDATA], 64);
-	    cache_get_value_name(0, "regIP", player_Info[playerid][REGIP], 64);
-	    TogglePlayerSpectating(playerid, 0);
-	    SetPVarInt(playerid, "logged", 1);
-		SetSpawnInfo(playerid, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-	    SpawnPlayer(playerid);
-	}
-	else
-	{
-	
-	}
 }
 
 forward checkReferal(playerid, referal[]);
@@ -526,45 +486,22 @@ public checkReferal(playerid, referal[])
 	cache_get_row_count(rows);
 	if(rows)
 	{
-		cache_get_value_name_int(0, "id", player_Info[playerid][REFERAL]);
-		return SCM(playerid, COLOR_GREEN, "Реферал успешно введён!");
+		new refid;
+		cache_get_value_name_int(0, "id", refid);
+		player_Info[playerid][REFERAL] = refid;
+		return SCM(playerid, COLOR_RED, "ГЂГЄГЄГ ГіГ­ГІГ  Г± ГІГ ГЄГЁГ¬ Г­ГЁГЄГ®Г¬ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ!");
 	}
 	else
 	{
-		SPD(playerid, DLG_REF, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} » Регистрация » Реферал", "{FFFFFF}Введите ник {0089cd}игрока{FFFFFF}пригласившего вас на сервер, и при достижении {ffd500}5-го{FFFFFF}уровня вы получите награду!\n\
- 		Вид награды:\n\
+		SPD(playerid, DLG_REF, DIALOG_STYLE_INPUT, "{0089cd}Clean Project{ffffff} В» ГђГҐГЈГЁГ±ГІГ°Г Г¶ГЁГї В» ГђГҐГґГҐГ°Г Г«", "{FFFFFF}Г‚ГўГҐГ¤ГЁГІГҐ Г­ГЁГЄ {0089cd}ГЁГЈГ°Г®ГЄГ {FFFFFF}ГЇГ°ГЁГЈГ«Г Г±ГЁГўГёГҐГЈГ® ГўГ Г± Г­Г  Г±ГҐГ°ГўГҐГ°, ГЁ ГЇГ°ГЁ Г¤Г®Г±ГІГЁГ¦ГҐГ­ГЁГЁ {ffd500}5-ГЈГ®{FFFFFF}ГіГ°Г®ГўГ­Гї ГўГ» ГЇГ®Г«ГіГ·ГЁГІГҐ Г­Г ГЈГ°Г Г¤Гі!\n\
+ 		Г‚ГЁГ¤ Г­Г ГЈГ°Г Г¤Г»:\n\
 		{5dd911}150.000${FFFFFF}\n\
-		{b6e1d1}+ 3 очка к следующему уровню.{FFFFFF}", "Далее", "Пропустить");
-		return SCM(playerid, COLOR_RED, "Аккаунта с таким ником не существует!");
+		{b6e1d1}+ 3 Г®Г·ГЄГ  ГЄ Г±Г«ГҐГ¤ГіГѕГ№ГҐГ¬Гі ГіГ°Г®ГўГ­Гѕ.{FFFFFF}", "Г„Г Г«ГҐГҐ", "ГЏГ°Г®ГЇГіГ±ГІГЁГІГј");
+		return SCM(playerid, COLOR_RED, "ГЂГЄГЄГ ГіГ­ГІГ  Г± ГІГ ГЄГЁГ¬ Г­ГЁГЄГ®Г¬ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ!");
 	}
 }
-
-stock Mapping()
-{
-    CreateVehicle(470, 278.7950, 2013.8074, 17.4350, -88.4401, -1, -1, 100);
-	CreateVehicle(470, 278.9742, 2018.7092, 17.4350, -88.4401, -1, -1, 100);
-	CreateVehicle(470, 278.7293, 2024.0891, 17.4350, -88.4401, -1, -1, 100);
-	CreateVehicle(470, 278.0030, 2029.5181, 17.4350, -88.4401, -1, -1, 100);
-	CreateVehicle(470, 277.5179, 2034.9558, 17.4350, -88.4401, -1, -1, 100);
-	CreateVehicle(432, 278.4102, 1982.7544, 17.6829, -90.5400, -1, -1, 100);
-	CreateVehicle(432, 278.8739, 1989.5643, 17.6829, -90.5400, -1, -1, 100);
-	CreateVehicle(432, 278.7140, 1996.5669, 17.6829, -90.5400, -1, -1, 100);
-	CreateVehicle(433, 276.0277, 1945.4109, 18.0227, -90.0000, -1, -1, 100);
-	CreateVehicle(433, 275.9258, 1951.4244, 18.0227, -90.0000, -1, -1, 100);
-	CreateVehicle(433, 275.8920, 1957.4176, 18.0227, -90.0000, -1, -1, 100);
-	CreateVehicle(433, 275.9490, 1963.1023, 18.0227, -90.0000, -1, -1, 100);
-	CreateVehicle(425, 301.2357, 2054.7830, 18.5387, 0.0000, -1, -1, 100);
-	CreateVehicle(425, 316.2587, 2054.1919, 18.5387, 0.0000, -1, -1, 100);
-	CreateVehicle(520, 316.2038, 1941.3070, 18.4670, 0.0000, -1, -1, 100);
-	CreateVehicle(520, 316.4769, 1955.9780, 18.4670, 0.0000, -1, -1, 100);
-	CreateVehicle(520, 316.5130, 1972.0522, 18.4670, 0.0000, -1, -1, 100);
-	CreateVehicle(520, 316.2327, 1924.9209, 18.4670, 0.0000, -1, -1, 100);
-	CreateVehicle(520, 278.8833, 1933.0540, 18.4670, -91.6800, -1, -1, 100); // ВЧ
-}
-
 
 public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 {
 	return 1;
 }
-
